@@ -95,10 +95,12 @@ class NewTopicTests(TestCase):
         self.assertTrue(Topic.objects.exists())
         self.assertTrue(Post.objects.exists())
 
-    def test_new_topic_invalid_post_data(self):
+    def test_new_topic_invalid_post_data(self): 
         url = reverse('new_topic', kwargs={'pk': 1})
         response = self.client.post(url, {})
+        form = response.context.get('form')
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(form.errors)
 
     def test_new_topic_invalid_post_data_empty_fields(self):
         url = reverse('new_topic', kwargs={'pk': 1})
@@ -115,4 +117,5 @@ class NewTopicTests(TestCase):
         url=reverse('new_topic',kwargs={'pk':1})
         response=self.client.get(url)
         form=response.context.get('form')
-        self.assertsIsInstance(form,NewTopicForm)
+        self.assertIsInstance(form,NewTopicForm)
+
