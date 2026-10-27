@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'boards',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,5 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGOUT_REDIRECT_URL='index'
