@@ -62,7 +62,7 @@ class SuccessfulSignUpTests(TestCase):
 
     def test_form_inputs(self):
         redirect_response=self.client.get(reverse('signup'))
-        self.assertContains(redirect_response, '<input', 6)
+        self.assertContains(redirect_response, '<input', 5)
         self.assertContains(redirect_response, 'type="text"', 1)
         self.assertContains(redirect_response, 'type="email"', 1)
         self.assertContains(redirect_response, 'type="password"', 2)
